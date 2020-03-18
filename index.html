@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Heroflix</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Bangers|Montserrat&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="head">
+
+                <div class="logo">
+
+                </div>
+                <div class="search">
+                    <input id="input" type="text" placeholder=" &#128269   Cerca un film">
+                    <button id="bottone">Cerca</button>
+                </div>
+                
+            </div>
+            <div class="container-film">
+
+            </div>
+
+        </div>
+
+        <script id="template-film-list" type="text/x-handlebars-template">
+
+                    <div class="lista" data-type='{{type}}'>
+                        <h1>{{titolo}}</h1>
+                        <h3>{{titoloOriginale}}</h3>
+                        <span>{{lingua}}</span>
+                        <span>{{voto}}</span>
+                    </div>
+
+                </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/main.js" charset="utf-8"></script>
+    </body>
+</html>
