@@ -12,6 +12,11 @@
     width: 100vw;
 }
 
+.background {
+    background-image: url('https://i.insider.com/5e1b29d249878c6a65605963?width=2500&format=jpeg&auto=webp');
+    background-size: cover;
+}
+
 /* Barra di ricerca */
 .head{
     height: 70px;
@@ -21,20 +26,33 @@
     justify-content: center;
 }
 
+/* Logo-top */
 .logo{
     height: 70px;
     width: 50%;
-    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
+.logo img{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+select{
+    background-color: white;
+}
+
+/* Right-top */
 .search{
     height: 70px;
     width: 50%;
-    border: 1px solid white;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-right: 50px;
+    padding-right: 30px;
 }
 
 #input{
@@ -48,18 +66,346 @@
     cursor: pointer;
 }
 
-.container-film{
-    width: 100vw;
+.utentis .profile-photo{
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    margin-left: 20px;
+    background-color: red;
+}
+
+
+/* In riproduzione */
+.look-this{
+    display: flex;
+    align-items: center;
+    height: 430px;
+}
+
+.look-this-info{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.look-this-info img{
+    width:35px;
+    object-fit: contain;
+}
+
+.look-this-info h1{
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.look-this-info h1,
+.look-this-info h4,
+.look-this-info p{
+    padding-bottom: 10px;
+}
+
+/* .look-this-info h4::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f816";
+} */
+
+.play-info{
+    display: flex;
+    flex-direction: row;
+}
+
+.play{
+    height: 30px;
+    width: 100px;
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    padding-top: 10px;
+
+}
+
+/* .look-this-info .play::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f04b";
+} */
+
+.grey{
+    background-color: white;
+    color: black;
+}
+
+.look-this-img{
+    width: 70%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    padding-right: 20px;
+}
+
+.look-this-img img{
+    width: 700px;
+    height: 500px;
+    object-fit: contain;
+    opacity: 0.7;
+}
+
+/* Default film/telefilm */
+.default-film{
+    display: flex;
+    justify-content: flex-start;
+    width: 1200px;
+    margin-top:20px;
+}
+
+.default-film img,
+.default-telefilm img{
+    height: 180px;
+    object-fit: contain;
+    margin-top: 20px;
+    margin-left: 10px;
+    border: 1px solid white;
+}
+
+.default-telefilm{
+    display: flex;
+    justify-content: flex-start;
+    width: 1200px;
+    margin-bottom:20px;
+}
+
+/* Lista film/telefilm*/
+.listaa{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
+.container-film{
+    width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.container-telefilm{
+    width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    overflow-y: auto;
+}
+
 .lista{
-    height: 100px;
-    width: 400px;
+    height: 300px;
+    width: 200px;
     border: 1px solid white;
     padding:5px;
     margin: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lista h1{
+    font-size: 15px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.lista h3{
+    font-size: 10px;
+    text-align: center;
+}
+
+.poster{
+    height: 130px;
+    width: 130px;
+    object-fit: contain;
+}
+
+.flag{
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+}
+
+.stars{
+    display: flex;
+    flex-direction: row;
+}
+
+.stars span{
+    font-size: 10px;
+}
+
+i.fas.fa-star.unob,
+i.fas.fa-star.dueb,
+i.fas.fa-star.treb,
+i.fas.fa-star.quattrob,
+i.fas.fa-star.cinqueb{
+    display: none;
+}
+
+/* Heroflix scelta utenti */
+.container-user-choice{
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.head{
+    height: 70px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.logos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 100%;
+}
+
+.logos img{
+    width: 180px;
+    height: 60px;
+    object-fit: contain;
+    margin-left: 20px;
+}
+
+.utenti{
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.elementi{
+    height: 400px;
+    width: 800px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.elementi h1{
+    font-size: 35px;
+}
+
+.image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image img{
+    height: 130px;
+    width:130px;
+    object-fit: contain;
+    margin: 20px 20px 10px;
+    cursor: pointer;
+}
+
+.utente.icon{
+    height: 130px;
+    width:130px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.utente.icon i.fas.fa-plus-circle{
+    height: 130px;
+    font-size: 70px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.color{
+    color: #f28400;
+}
+
+
+.image h5{
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.border{
+    border: 3px solid #f28400;
+}
+
+.text{
+    color:#f28400;
+}
+
+.gestisci{
+    height: 50px;
+    width: 180px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.color-border{
+    border-color: #f28400;
+    color:#f28400;
+}
+
+
+/* Media screen */
+@media screen and (max-width: 768px){
+
+    /* Heroflix scelta utenti */
+    .logo img{
+        width: 100px;
+        height: 40px;
+        object-fit: contain;
+    }
+
+    .elementi h1{
+        font-size: 20px;
+    }
+
+    .image img{
+        height: 90px;
+        width:90px;
+        object-fit: contain;
+        margin: 30px 8px 10px;
+    }
+
+    .image h5{
+        margin-bottom: 30px;
+    }
+
+    .utente.icon i.far.fa-plus-square{
+        display: none;
+    }
+
+
 }

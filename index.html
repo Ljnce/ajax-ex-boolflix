@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Heroflix</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"/>
+        <script src="https://kit.fontawesome.com/4cd7baf8bb.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Bangers|Montserrat&display=swap" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>
         <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
@@ -13,33 +13,147 @@
     <body>
 
         <div class="container">
-            <div class="head">
+            <div class="background">
+                <div class="head">
+                    <div class="logo">
+                        <img src="img/logo.png" alt="logo">
+                        <select class="data-type" name="">
+                            <option value="">Scegli un genere</option>
+                                <option value="film">Film</option>
+                                <option value="series">Serie TV</option>
+                        </select>
+                    </div>
+                    <div class="search">
+                        <input id="input" type="text" placeholder="    Cerca un film">
+                        <button id="bottone">Cerca</button>
+                        <div class="profile-photo">
 
-                <div class="logo">
-                    
+                        </div>
+                    </div>
                 </div>
-                <div class="search">
-                    <input id="input" type="text" placeholder=" &#128269   Cerca un film">
-                    <button id="bottone">Cerca</button>
+                <div class="look-this">
+                    <div class="look-this-info">
+                        <img src="img/hero.png" alt="">
+                        <h1>Avengers</h1>
+                        <h4><i class="fas fa-pepper-hot"></i> Oggi al n&#870; 1 in Italia</h4>
+                        <p>I leggendari supereroi Iron Man, Hulk, Thor, Capitan America, Occhio di Falco e la Vedova Nera vengono reclutati da un'agenzia governativa segreta per combattere un nemico inatteso che minaccia la sicurezza della Terra.</p>
+                        <div class="play-info">
+                        <div class="play">
+                            <p><i class="fas fa-play"></i> Play</p>
+                        </div>
+                        <div class="play">
+                            <p><i class="fas fa-info-circle"></i> Info</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="look-this-img">
+
+                    </div>
                 </div>
-
             </div>
-            <div class="container-film">
-
+            <div class="listaa">
+                <div class="container-film">
+                <!-- <div class="favourite">
+                        <h4>Suggeriti per te</h4>
+                </div> -->
+                    <div class="default-film">
+                        <img src="https://image.tmdb.org/t/p/w1280/A8wKjIrSncKxnDInEklXlPefHWv.jpg" alt="">
+                        <img src="https://image.tmdb.org/t/p/w1280/oFOoSdLUgUV96XwP4loR29uPZjM.jpg" alt="">
+                        <img src="https://image.tmdb.org/t/p/w1280/tp2EfJBs6UMA39neOcxJdyL2x1v.jpg" alt="">
+                        <img src="https://image.tmdb.org/t/p/w1280/iRmijxu0JHQf8GIFsl5k0Xov032.jpg" alt="">
+                        <img src="https://image.tmdb.org/t/p/w1280/fVKewiBPcY2dQujYEsnQmQ7lfRZ.jpg" alt="">
+                        <img src="https://image.tmdb.org/t/p/w1280/xvjOBWfm32skiwIAU2iocb6fyC8.jpg" alt="">
+                    </div>
+                </div>
+                <div class="container-telefilm">
+                <!-- <div class="favourite">
+                        <h4>I tuoi preferiti</h4>
+                </div> -->
+                    <div class="default-telefilm">
+                        <img src="https://image.tmdb.org/t/p/w1280/oqvx02LqhXcdlbFDhbMcuSFxzir.jpg" alt="">
+                        <img src="https://image.tmdb.org/t/p/w1280/gj0fKa4jjwxZLmVq7I8tv13V45.jpg" alt="">
+                        <img src="https://image.tmdb.org/t/p/w1280/8xA9XQ6KfvXFKcNLNRWSPT39Gaz.jpg" alt="">
+                        <img src="https://image.tmdb.org/t/p/w1280/9KEkVed806HcnpjPR5Uzl0ao2da.jpg" alt="">
+                        <img src="https://image.tmdb.org/t/p/w1280/jvTvs3U2AKFQ4x127gdabdYfaZ8.jpg" alt="">
+                        <img src="https://image.tmdb.org/t/p/w1280/r3XPtdV7otZiHZruc3trTpnTi84.jpg" alt="">
+                    </div>
+                </div>
             </div>
-
         </div>
+
+        <!-- Utenti -->
+        <div class="container-user-choice">
+            <div class="head">
+                <div class="logos">
+                    <img src="img/logo.png" alt="">
+                </div>
+            </div>
+            <div class="utenti">
+                <div class="elementi">
+                    <h1>Chi vuole guardare Heroflix?</h1>
+                    <div class="image">
+                        <div class="utente" data-open="0">
+                            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e13eb438650505.598fa118c8eab.jpg" alt="iron man">
+                            <h5>Tony</h5>
+                        </div>
+                        <div class="utente" data-open="1">
+                            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1454d038650505.598fa118c9674.jpg" alt="black phanter">
+                            <h5>T'Challa</h5>
+                        </div>
+                        <div class="utente" data-open="2">
+                            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/61b37438650505.598fa7a1c8da3.jpg" alt="wonder woman">
+                            <h5>Diana</h5>
+                        </div>
+                        <div class="utente icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                    </div>
+                    <div class="gestisci">
+                        <h4>GESTISCI PROFILI</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <script id="template-film-list" type="text/x-handlebars-template">
 
-                    <div class="lista" data-type='{{type}}'>
+                    <div class="lista films" data-type='film'>
+                        <img class="poster"src="https://image.tmdb.org/t/p/w185{{image}}" alt="">
                         <h1>{{titolo}}</h1>
                         <h3>{{titoloOriginale}}</h3>
-                        <span>{{lingua}}</span>
-                        <span>{{voto}}</span>
+                        <img class="flag"src="https://www.countryflags.io/{{flag}}/shiny/64.png" alt="">
+                        <div class="stars">
+                        <span>{{{stella}}}<span>
+                        </div>
                     </div>
 
-                </script>
+        </script>
+
+        <script id="template-serie-list" type="text/x-handlebars-template">
+
+                    <div class="lista series" data-type='series'>
+                        <img class="poster" src="https://image.tmdb.org/t/p/w185{{image}}" alt="">
+                        <h1>{{nome}}</h1>
+                        <h3>{{nomeOriginale}}</h3>
+                        <img class="flag" src="https://www.countryflags.io/{{flags}}/shiny/64.png" alt="">
+                        <span>{{voto}}</span>
+                        <div class="stars">
+                        <span>{{{stella}}}<span>
+                    </div>
+
+        </script>
+
+        <script id="userid" type="text/x-handlebars-template">
+
+                    <div class="utentis" data-user= "{{numero}}">
+                        <img class="profile-photo" src="https://mir-s3-cdn-cf.behance.net/project_modules/{{immagine}}" alt="">
+                    </div>
+
+        </script>
+
+
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="js/main.js" charset="utf-8"></script>
