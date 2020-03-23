@@ -121,6 +121,7 @@ select{
 .play-info{
     display: flex;
     flex-direction: row;
+    margin-bottom: 20px;
 }
 
 .play{
@@ -148,9 +149,24 @@ select{
     color: #f28400;
 }
 
-.look-this-img{
-    width: 70%;
-    height: 500px;
+/* Actor list */
+#bottone-attore{
+    width:80px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.look-this-actor{
+    width:760px;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+    margin-left: 50px;
+}
+
+.actor-list{
+    margin-right: 10px;
 }
 
 /* Default film/telefilm */

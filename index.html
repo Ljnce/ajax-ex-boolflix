@@ -38,15 +38,17 @@
                         <h4><i class="fas fa-pepper-hot"></i> Oggi al n&#870; 1 in Italia</h4>
                         <p>I leggendari supereroi Iron Man, Hulk, Thor, Capitan America, Occhio di Falco e la Vedova Nera vengono reclutati da un'agenzia governativa segreta per combattere un nemico inatteso che minaccia la sicurezza della Terra.</p>
                         <div class="play-info">
-                        <div class="play">
-                            <p><i class="fas fa-play"></i> Play</p>
+                            <div class="play">
+                                <p><i class="fas fa-play"></i> Play</p>
+                            </div>
+                            <div class="play">
+                                <p><i class="fas fa-info-circle"></i> Info</p>
+                            </div>
                         </div>
-                        <div class="play">
-                            <p><i class="fas fa-info-circle"></i> Info</p>
-                        </div>
-                        </div>
+                        <p>Clicca qui per vedere la lista degli attori di Avengers!</p>
+                        <button id="bottone-attore">Push</button>
                     </div>
-                    <div class="look-this-img">
+                    <div class="look-this-actor">
 
                     </div>
                 </div>
@@ -80,7 +82,7 @@
                         <img src="https://image.tmdb.org/t/p/w1280/tpj8wyeAVgDakXchERIzYUuwln9.jpg" alt="">
                         <img src="https://image.tmdb.org/t/p/w1280/zqJxSzet2tAl34AiNj9zlfRWXx5.jpg" alt="">
                         <img src="https://image.tmdb.org/t/p/w1280/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg" alt="">
-                        <img src="https://image.tmdb.org/t/p/w1280/9KEkVed806HcnpjPR5Uzl0ao2da.jpg" alt="">
+                        <img src="https://image.tmdb.org/t/p/w1280/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg" alt="">
                         <img src="https://image.tmdb.org/t/p/w1280/9l6cJGkqBiV0CpWESbPZGvI8szP.jpg" alt="">
                         <img src="https://image.tmdb.org/t/p/w1280/rrrtSMsjEor0S45Ef5AJpNAgWPD.jpg" alt="">
                         <img src="https://image.tmdb.org/t/p/w1280/3pzQv4g1wcbrSh7zCis0S27O2Ih.jpg" alt="">
@@ -176,6 +178,18 @@
                             <p>{{voto}}/10</p>
                         </div>
                     </div>
+
+        </script>
+
+
+
+        <script id="template-actor" type="text/x-handlebars-template">
+
+            <div class="actor-list">
+                <img class="foto" src="https://image.tmdb.org/t/p/w92{{fotoattore}}" alt="">
+                <h3>{{nome}}</h3>
+                <h4>{{personaggio}}</h4>
+            </div>
 
         </script>
 

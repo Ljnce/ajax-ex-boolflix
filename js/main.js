@@ -416,8 +416,11 @@ $('.listaa').on('mouseleave', '.lista', function (){
     thisInfo.removeClass('active');
 });
 
+// Lista attori "in costruzione".....
+source = $("#template-actor").html(); //Trovo il mio template
+var templateOne = Handlebars.compile(source); //
 
-function avengersActor(filmCercato){
+$('#bottone-attore').click(function(){
 
     var apiBaseUrl = 'https://api.themoviedb.org/3';
 
@@ -425,16 +428,43 @@ function avengersActor(filmCercato){
     url:apiBaseUrl + '/movie/299536/credits',
     data:{
         api_key:'ccb9c8ef6b3a33f07b7be007336fd3e2',
-        query:filmCercato,
+        query:'',
         language: 'it-IT'
     },
     method:'GET',
     success: function(avengers){
         var attori = avengers.cast
         console.log(attori);
-        for (var i = 0; i < array.length; i++) {
-            array[i]
+        for (var i = 0; i < attori.length; i++) {
+        var attore = attori[i];
+        var actorList = {
+            nome:attore.name,
+            personaggio:attore.character,
+            fotoattore: attore.profile_path
         }
+
+        var templateActor = templateOne(actorList);
+        $('.look-this-actor').append(templateActor);
+        }
+    },
+    error: function(){
+        alert('errore');
     }
+})
 });
-};
+
+// $('#bottone-attore').dblclick(function(){
+//     $('.actor-list').hide();
+// });
+
+
+/*
+function actor(attoreCercato, actorList){
+    if(attoreCercato == actorLista){
+        source = $("#actor-list").html(); //Trovo il mio template
+        var template1 = Handlebars.compile(source); //
+        var templateActor = template1(actorList);
+        $('.look-this-actor').append(templateActor);
+    }
+}
+*/
