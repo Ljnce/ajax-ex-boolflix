@@ -18,9 +18,9 @@
                     <div class="logo">
                         <img src="img/logo.png" alt="logo">
                         <select class="data-type" name="">
-                            <option value="">Scegli un genere</option>
-                                <option value="film">Film</option>
-                                <option value="series">Serie TV</option>
+                            <option value="scegli">Scegli un genere</option>
+                            <option value="film">Film</option>
+                            <option value="series">Serie TV</option>
                         </select>
                     </div>
                     <div class="search">
@@ -52,10 +52,10 @@
                 </div>
             </div>
             <div class="listaa">
+                <div class="favourite">
+                        <p>Suggeriti per te:</p>
+                </div>
                 <div class="container-film">
-                <!-- <div class="favourite">
-                        <h4>Suggeriti per te</h4>
-                </div> -->
                     <div class="default-film">
                         <img src="https://image.tmdb.org/t/p/w1280/A8wKjIrSncKxnDInEklXlPefHWv.jpg" alt="">
                         <img src="https://image.tmdb.org/t/p/w1280/oFOoSdLUgUV96XwP4loR29uPZjM.jpg" alt="">
@@ -65,17 +65,18 @@
                         <img src="https://image.tmdb.org/t/p/w1280/xvjOBWfm32skiwIAU2iocb6fyC8.jpg" alt="">
                     </div>
                 </div>
+                <div class="favourite">
+                        <h4>I tuoi Preferiti:</h4>
+                </div>
                 <div class="container-telefilm">
-                <!-- <div class="favourite">
-                        <h4>I tuoi preferiti</h4>
-                </div> -->
-                    <div class="default-telefilm">
+                    <div class="default-series">
                         <img src="https://image.tmdb.org/t/p/w1280/oqvx02LqhXcdlbFDhbMcuSFxzir.jpg" alt="">
                         <img src="https://image.tmdb.org/t/p/w1280/gj0fKa4jjwxZLmVq7I8tv13V45.jpg" alt="">
                         <img src="https://image.tmdb.org/t/p/w1280/8xA9XQ6KfvXFKcNLNRWSPT39Gaz.jpg" alt="">
                         <img src="https://image.tmdb.org/t/p/w1280/9KEkVed806HcnpjPR5Uzl0ao2da.jpg" alt="">
                         <img src="https://image.tmdb.org/t/p/w1280/jvTvs3U2AKFQ4x127gdabdYfaZ8.jpg" alt="">
                         <img src="https://image.tmdb.org/t/p/w1280/r3XPtdV7otZiHZruc3trTpnTi84.jpg" alt="">
+                        <img src="https://image.tmdb.org/t/p/w1280/9k12tUa75kGKqyEe1Brdxyed0u1.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -120,12 +121,16 @@
         <script id="template-film-list" type="text/x-handlebars-template">
 
                     <div class="lista films" data-type='film'>
-                        <img class="poster"src="https://image.tmdb.org/t/p/w185{{image}}" alt="">
-                        <h1>{{titolo}}</h1>
-                        <h3>{{titoloOriginale}}</h3>
-                        <img class="flag"src="https://www.countryflags.io/{{flag}}/shiny/64.png" alt="">
-                        <div class="stars">
-                        <span>{{{stella}}}<span>
+                        <div class="background-poster">
+                            <img class="poster"src="{{image}}" alt="">
+                        </div>
+                        <div class="info">
+                            <h1>{{titolo}}</h1>
+                            <h3>{{titoloOriginale}}</h3>
+                            <img class="flag"src="https://www.countryflags.io/{{flag}}/shiny/64.png" alt="">
+                            <div class="stars">
+                            <span>{{{stella}}}<span>
+                            <p>{{voto}}/10</p>
                         </div>
                     </div>
 
@@ -134,13 +139,17 @@
         <script id="template-serie-list" type="text/x-handlebars-template">
 
                     <div class="lista series" data-type='series'>
-                        <img class="poster" src="https://image.tmdb.org/t/p/w185{{image}}" alt="">
-                        <h1>{{nome}}</h1>
-                        <h3>{{nomeOriginale}}</h3>
-                        <img class="flag" src="https://www.countryflags.io/{{flags}}/shiny/64.png" alt="">
-                        <span>{{voto}}</span>
-                        <div class="stars">
-                        <span>{{{stella}}}<span>
+                        <div class="background-poster">
+                            <img class="poster" src="{{image}}" alt="">
+                        </div>
+                        <div class="info">
+                            <h1>{{nome}}</h1>
+                            <h3>{{nomeOriginale}}</h3>
+                            <img class="flag" src="https://www.countryflags.io/{{flags}}/shiny/64.png" alt="">
+                            <div class="stars">
+                            <span>{{{stella}}}<span>
+                            <p>{{voto}}/10</p>
+                        </div>
                     </div>
 
         </script>

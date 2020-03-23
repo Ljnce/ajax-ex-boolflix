@@ -104,16 +104,19 @@ function myListMoovie(filmCercato){
         //console.log(films); //trovo tutti i film
             for (var i = 0; i < films.length; i++) {
                 var film = films[i]
+                console.log(film);
                 //console.log(film);//trovo i singoli film il ciclo);
                 var schedaFilm = { //creo la mia scheda film in cui ricavo tutto quello che mi servirà
-                    image:poster(film.poster_path),
+                    image:poster(film.poster_path, foto),
                     titolo:film.title,
                     titoloOriginale:film.original_title,
                     flag:flag(film.original_language),//flag(film.original_language),
-                    stella:stars('<i class="far fa-star"></i>', voto)
+                    stella:stars('<i class="far fa-star"></i>', votos),
+                    voto: voto
                 };
                 var voto = film.vote_average;
-                var voto = parseInt(Math.ceil(voto)/ 2);// ------>     da eliminare se si vogliono usare le 10 stelle
+                var votos = parseInt(Math.ceil(voto/ 2));// ------>     da eliminare se si vogliono usare le 10 stelle
+                var foto = 'https://image.tmdb.org/t/p/w342';
 
 
                 var titolo = schedaFilm.titoloOriginale; //creo variabile che mi trova solo i titoli dei film
@@ -166,14 +169,16 @@ function myListSeries(filmCercato){
                 var serie = series[i];
                 //sconsole.log(serie);
                 var schedaSerie = {
-                    image:poster(serie.poster_path),
+                    image:poster(serie.poster_path, foto),
                     nome:serie.name,
                     nomeOriginale:serie.original_name,
                     flags:flag(serie.original_language),
-                    stella:stars('<i class="far fa-star"></i>', voto)
+                    stella:stars('<i class="far fa-star"></i>', votos),
+                    voto: voto
                 };
                 var voto = serie.vote_average;
-                var voto = parseInt(Math.ceil(voto)/ 2); //  -------> da eliminare se si vogliono usare le 10 stelle
+                var votos = parseInt(Math.ceil(voto/ 2)); //  -------> da eliminare se si vogliono usare le 10 stelle
+                var foto = 'https://image.tmdb.org/t/p/w342';
 
                 var titoloSerie = schedaSerie.nomeOriginale;
                 ricercamiLaSerieTv(filmCercato, titoloSerie, schedaSerie);
@@ -185,6 +190,7 @@ function myListSeries(filmCercato){
     });
 
 };
+
 
 function ricercamiLaSerieTv(filmCercato, titoloSerie, schedaSerie){
     if (filmCercato.toLowerCase() !== titoloSerie.toLowerCase()) {
@@ -208,26 +214,28 @@ function flag(bandiera){
 };
 
 //Poster senza foto
-function poster(poster){
-    if (poster === null) {
-        poster = '/7UGKZ5c0HSwro6n7GChl8uyaIfy.jpg';
+function poster(poster, foto){
+    if (poster !== null) {
+        poster = foto + '' + poster;
+    } else{
+        poster = 'img/logo.png';
     }
     return poster;
 };
 
 //5 Stelle
-function stars(icona, voto){
-    if (voto == 0) {
+function stars(icona, votos){
+    if (votos == 0) {
         icona = '<i class="far fa-star"></i>' + '' + '<i class="far fa-star"></i>' + '' + '<i class="far fa-star"></i>' + '' + '<i class="far fa-star"></i>' + '' + '<i class="far fa-star"></i>';
-    } else if (voto == 1) {
+    } else if (votos == 1) {
         icona = '<i class="fas fa-star"></i>' + '' + '<i class="far fa-star"></i>' + '' + '<i class="far fa-star"></i>' + '' + '<i class="far fa-star"></i>' + '' + '<i class="far fa-star"></i>';
-    } else if (voto == 2) {
+    } else if (votos == 2) {
         icona = '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>'+ '' + '<i class="far fa-star"></i>' + '' + '<i class="far fa-star"></i>' + '' + '<i class="far fa-star"></i>';
-    } else if (voto == 3) {
+    } else if (votos == 3) {
         icona = '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>' + '' + '<i class="far fa-star"></i>' + '' + '<i class="far fa-star"></i>';
-    } else if (voto == 4) {
+    } else if (votos == 4) {
         icona = '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>' + '' + '<i class="far fa-star"></i>';
-    } else if (voto == 5) {
+    } else if (votos == 5) {
         icona = '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>';;
     } else {
         icona = '<i class="fas fa-medal"></i>';
@@ -290,35 +298,36 @@ function stars(icona, voto){
 
 //SCELTA SERIE TV O FilM
 $('.data-type').change(function(){
-    var thisType = $(this).val();
-    if (thisType == "") {
+    var thisType = $(this).val().toLowerCase();
+    if (thisType == 'scegli') {
         $('.lista').show();
+    } else{
+        film(thisType);
+        telefilm(thisType);
     }
-    ok(thisType);
-    okk(thisType);
 });
 
-function ok(thisType){
-        $('.lista.films').each(function(){
-            var thisListType = $(this).attr('data-type');
-            if (thisType.toLowerCase() == thisListType.toLowerCase()) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
-        })
-    };
+function film(thisType){
+    $('.lista.films').each(function(){
+        var thisListType = $(this).attr('data-type');
+        if (thisType == thisListType.toLowerCase()) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    })
+};
 
-function okk(thisType){
-        $('.lista.series').each(function(){
-            var thisListType = $(this).attr('data-type');
-            if (thisType.toLowerCase() == thisListType.toLowerCase()) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
-        })
-    };
+function telefilm(thisType){
+    $('.lista.series').each(function(){
+        var thisListType = $(this).attr('data-type');
+        if (thisType == thisListType.toLowerCase()) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    })
+};
 
 
 //PLAY
@@ -360,3 +369,32 @@ for (var i = 0; i < users.length; i++) {
     }
 };
 });
+
+// Comparsa scritte sull'hover all'immagine
+/*
+$('.listaa').on('mouseenter', '.lista', function(){
+    var thisCard = $(this);
+    thisCard.addClass('active');
+});
+
+$('.listaa').on('mouseleave', '.lista', function(){
+    var thisCard = $(this);
+    thisCard.removeClass('active');
+});
+*/
+
+$('.listaa').on('mouseenter', '.lista', function (){
+    var thisPoster = $(this).children('.background-poster');
+    var thisInfo = $(this).children('.info');
+
+    thisPoster.addClass('noactive');
+    thisInfo.addClass('active');
+})
+
+$('.listaa').on('mouseleave', '.lista', function (){
+    var thisPoster = $(this).children('.background-poster');
+    var thisInfo = $(this).children('.info');
+
+    thisPoster.removeClass('noactive');
+    thisInfo.removeClass('active');
+})
