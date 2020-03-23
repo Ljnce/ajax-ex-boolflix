@@ -51,6 +51,15 @@ $('.utenti').on('mouseleave', '.gestisci', function(){
     thisText.removeClass('color-border');
 });
 
+// Scroll header
+$(document).on("scroll", function() {
+    if($(window).scrollTop() > 30) {
+        $(".head").addClass("black");
+    } else {
+        $(".head").removeClass("black");
+    }
+});
+
 
 // Template film/telefilm
 source = $("#template-film-list").html(); //Trovo il mio template
@@ -67,6 +76,7 @@ $('#bottone').click(function(){  //----> CON CLICK <-----
     $('.title-search').show();
     myListMoovie(filmCercato);
     myListSeries(filmCercato);
+    avengersActor(filmCercato);
 });
 //$('#bottone').click(myListMoovie);
 
@@ -81,6 +91,7 @@ $('#input').keypress(function(event){ //---------> CON TASTO ENTER <--------
         $('.title-search').show();
         myListMoovie(filmCercato);
         myListSeries(filmCercato);
+        avengersActor(filmCercato);
     }
 });
 
@@ -403,4 +414,27 @@ $('.listaa').on('mouseleave', '.lista', function (){
 
     thisPoster.removeClass('noactive');
     thisInfo.removeClass('active');
-})
+});
+
+
+function avengersActor(filmCercato){
+
+    var apiBaseUrl = 'https://api.themoviedb.org/3';
+
+    $.ajax({
+    url:apiBaseUrl + '/movie/299536/credits',
+    data:{
+        api_key:'ccb9c8ef6b3a33f07b7be007336fd3e2',
+        query:filmCercato,
+        language: 'it-IT'
+    },
+    method:'GET',
+    success: function(avengers){
+        var attori = avengers.cast
+        console.log(attori);
+        for (var i = 0; i < array.length; i++) {
+            array[i]
+        }
+    }
+});
+};

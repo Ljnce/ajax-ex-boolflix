@@ -25,6 +25,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed;
+}
+
+.black{
+    background-color: black;
 }
 
 /* Logo-top */
@@ -80,7 +85,7 @@ select{
 .look-this{
     display: flex;
     align-items: center;
-    height: 480px;
+    height: 550px;
 }
 
 .look-this-info{
@@ -140,7 +145,7 @@ select{
 
 .grey{
     background-color: white;
-    color: black;
+    color: #f28400;
 }
 
 .look-this-img{
@@ -276,6 +281,43 @@ select{
     font-size: 15px;
 }
 
+/* Footer */
+footer{
+    height: 120px;
+    background-color: #f28400;
+}
+
+.foot{
+    height: 120px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo{
+    width:100px;
+    margin-left: 50px;
+}
+
+.footer-logo img{
+    width: 150px;
+    object-fit: contain;
+    background-color: black;
+}
+
+.icon{
+    color: black;
+    font-size: 25px;
+    margin-right: 50px;
+}
+
+i.fab.fa-facebook,
+i.fab.fa-instagram,
+i.fab.fa-twitter,
+i.fab.fa-youtube{
+    color: black;
+}
+
 /* Heroflix scelta utenti */
 .container-user-choice{
     background-color: black;
@@ -302,10 +344,11 @@ select{
 }
 
 .logos img{
-    width: 180px;
+    width: 220px;
     height: 60px;
     object-fit: contain;
     margin-left: 20px;
+    margin-top:200px;
 }
 
 .utenti{
@@ -339,7 +382,9 @@ select{
     height: 130px;
     width:130px;
     object-fit: contain;
-    margin: 20px 20px 10px;
+    margin-right: 30px;
+    margin-top:20px;
+    margin-bottom: 5px;
     cursor: pointer;
 }
 
@@ -355,8 +400,9 @@ select{
 .utente.icon i.fas.fa-plus-circle{
     height: 130px;
     font-size: 70px;
-    margin-top: 20px;
+    margin-top: 15px;
     cursor: pointer;
+    margin-right: 20px;
 }
 
 .color{
@@ -368,6 +414,7 @@ select{
     text-align: center;
     margin-bottom: 20px;
     cursor: pointer;
+    margin-right: 30px;
 }
 
 .border{
@@ -386,6 +433,7 @@ select{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .color-border{
