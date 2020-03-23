@@ -15,6 +15,7 @@
 .background {
     background-image: url('../img/sfondo.jpg');
     background-size: cover;
+    margin-bottom: 10px;
 }
 
 /* Barra di ricerca */
@@ -150,13 +151,13 @@ select{
 /* Default film/telefilm */
 .default-film{
     display: flex;
-    width: 1200px;
+    width: 1300px;
     overflow-y: auto;
 }
 
 .default-series{
     display: flex;
-    width: 1200px;
+    width: 1300px;
     overflow-y: auto;
     margin-bottom: 20px;
 }
@@ -183,20 +184,25 @@ select{
 
 .favourite{
     margin-top: 20px;
+    font-weight: bold;
+}
+
+.title-search{
+    display: none;
 }
 
 .container-film{
-    width: 1200px;
+    width: 1300px;
     display: flex;
     align-items: center;
     flex-direction: row;
     overflow-y: auto;
-    margin-bottom: 20px;
+    margin: 20px 0;
     margin-top: 5px;
 }
 
 .container-telefilm{
-    width: 1200px;
+    width: 1300px;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -240,6 +246,11 @@ select{
 }
 
 .lista h3{
+    font-size: 10px;
+    font-size: lighter;
+}
+
+.lista h5{
     font-size: 10px;
     font-size: lighter;
 }

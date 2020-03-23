@@ -63,6 +63,8 @@ $('#bottone').click(function(){  //----> CON CLICK <-----
     $('#input').val('');//Cancello quello che c'' all'interno dell'input
     $('.container-film').text(''); //Cancello il risultato precedente
     ('.container-telefilm').text('');
+    $('.favourite').hide();
+    $('.title-search').show();
     myListMoovie(filmCercato);
     myListSeries(filmCercato);
 });
@@ -75,6 +77,8 @@ $('#input').keypress(function(event){ //---------> CON TASTO ENTER <--------
         $('#input').val('');//Cancello quello che c'' all'interno dell'input
         $('.container-film').text(''); //Cancello il risultato precedente
         $('.container-telefilm').text(''); //Cancello il risultato precedente
+        $('.favourite').hide();
+        $('.title-search').show();
         myListMoovie(filmCercato);
         myListSeries(filmCercato);
     }
@@ -110,6 +114,7 @@ function myListMoovie(filmCercato){
                     image:poster(film.poster_path, foto),
                     titolo:film.title,
                     titoloOriginale:film.original_title,
+                    dataUscita:film.release_date,
                     flag:flag(film.original_language),//flag(film.original_language),
                     stella:stars('<i class="far fa-star"></i>', votos),
                     voto: voto
@@ -167,11 +172,12 @@ function myListSeries(filmCercato){
         //console.log(series);
             for (var i = 0; i < series.length; i++) {
                 var serie = series[i];
-                //sconsole.log(serie);
+                console.log(serie);
                 var schedaSerie = {
                     image:poster(serie.poster_path, foto),
                     nome:serie.name,
                     nomeOriginale:serie.original_name,
+                    dataUscita:serie.first_air_date,
                     flags:flag(serie.original_language),
                     stella:stars('<i class="far fa-star"></i>', votos),
                     voto: voto
@@ -398,9 +404,3 @@ $('.listaa').on('mouseleave', '.lista', function (){
     thisPoster.removeClass('noactive');
     thisInfo.removeClass('active');
 })
-
-
-//Rimozione "i tuoi film"
-function remove(filmCercato){
-
-}
