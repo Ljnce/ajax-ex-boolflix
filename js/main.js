@@ -218,7 +218,7 @@ function poster(poster, foto){
     if (poster !== null) {
         poster = foto + '' + poster;
     } else{
-        poster = 'img/logo.png';
+        poster = 'img/default.png';
     }
     return poster;
 };
@@ -398,3 +398,9 @@ $('.listaa').on('mouseleave', '.lista', function (){
     thisPoster.removeClass('noactive');
     thisInfo.removeClass('active');
 })
+
+
+//Rimozione "i tuoi film"
+function remove(filmCercato){
+
+}

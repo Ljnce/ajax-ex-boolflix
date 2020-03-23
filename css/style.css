@@ -13,7 +13,7 @@
 }
 
 .background {
-    background-image: url('https://i.insider.com/5e1b29d249878c6a65605963?width=2500&format=jpeg&auto=webp');
+    background-image: url('../img/sfondo.jpg');
     background-size: cover;
 }
 
@@ -79,7 +79,7 @@ select{
 .look-this{
     display: flex;
     align-items: center;
-    height: 430px;
+    height: 480px;
 }
 
 .look-this-info{
@@ -145,29 +145,17 @@ select{
 .look-this-img{
     width: 70%;
     height: 500px;
-    display: flex;
-    justify-content: center;
-    padding-right: 20px;
-}
-
-.look-this-img img{
-    width: 700px;
-    height: 500px;
-    object-fit: contain;
-    opacity: 0.7;
 }
 
 /* Default film/telefilm */
 .default-film{
     display: flex;
-    justify-content: center;
     width: 1200px;
     overflow-y: auto;
 }
 
 .default-series{
     display: flex;
-    justify-content: center;
     width: 1200px;
     overflow-y: auto;
     margin-bottom: 20px;
@@ -228,6 +216,7 @@ select{
     height: 300px;
     width: 200px;
     display: none;
+    padding-left: 7px;
 }
 
 .active{
@@ -238,15 +227,21 @@ select{
     display: none;
 }
 
+.info img{
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
 .lista h1{
     font-size: 15px;
-    text-align: center;
     margin-top: 10px;
+    font-weight: bold;
 }
 
 .lista h3{
     font-size: 10px;
-    text-align: center;
+    font-size: lighter;
 }
 
 .poster{
@@ -256,8 +251,8 @@ select{
 }
 
 .flag{
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     object-fit: contain;
 }
 
@@ -267,15 +262,7 @@ select{
 }
 
 .stars span{
-    font-size: 10px;
-}
-
-i.fas.fa-star.unob,
-i.fas.fa-star.dueb,
-i.fas.fa-star.treb,
-i.fas.fa-star.quattrob,
-i.fas.fa-star.cinqueb{
-    display: none;
+    font-size: 15px;
 }
 
 /* Heroflix scelta utenti */
