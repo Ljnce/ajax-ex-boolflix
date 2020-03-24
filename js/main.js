@@ -71,7 +71,7 @@ $('#bottone').click(function(){  //----> CON CLICK <-----
     var filmCercato = $('#input').val(); //Cerco nell'input
     $('#input').val('');//Cancello quello che c'' all'interno dell'input
     $('.container-film').text(''); //Cancello il risultato precedente
-    ('.container-telefilm').text('');
+    $('.container-telefilm').text('');
     $('.favourite').hide();
     $('.title-search').show();
     myListMoovie(filmCercato);
@@ -119,7 +119,6 @@ function myListMoovie(filmCercato){
         //console.log(films); //trovo tutti i film
             for (var i = 0; i < films.length; i++) {
                 var film = films[i]
-                console.log(film);
                 //console.log(film);//trovo i singoli film il ciclo);
                 var schedaFilm = { //creo la mia scheda film in cui ricavo tutto quello che mi servirà
                     image:poster(film.poster_path, foto),
@@ -131,6 +130,8 @@ function myListMoovie(filmCercato){
                     voto: voto,
                     overview: film.overview
                 };
+
+                var genere = film.genre_ids;
                 var voto = film.vote_average;
                 var votos = parseInt(Math.ceil(voto/ 2));// ------>     da eliminare se si vogliono usare le 10 stelle
                 var foto = 'https://image.tmdb.org/t/p/w342';
@@ -138,6 +139,7 @@ function myListMoovie(filmCercato){
 
                 var titolo = schedaFilm.titoloOriginale; //creo variabile che mi trova solo i titoli dei film
                 ricercamiIFilm(filmCercato, titolo, schedaFilm);
+                ricercaGenere(genere)
             /* ALTERNATIVA DENTRO ALLA FUNZIONE, SENZA CHIAMARE UNA FUNZIONE ESTERNA
             if (filmCercato.toLowerCase() == titolo.toLowerCase()) { //Se il testo che ho inserito è uguale a uno dei titoli, compare
                 var thisIsMyTemplate = template(schedaFilm); // Creo una variabile - template composta dal mio "array[i]" di elementi
@@ -160,7 +162,15 @@ function ricercamiIFilm(filmCercato, titolo, schedaFilm) {
     }
 };
 
-
+//Generi film
+function ricercaGenere(genere){
+$('.mood-type').change(function(){
+var thisGenre = $(this).val();
+if (thisGenre == genere) { console.log('ciao');
+    $('.lista').hide()
+}
+})
+};
 
 //Serie TV
 source = $("#template-serie-list").html();
@@ -184,7 +194,6 @@ function myListSeries(filmCercato){
         //console.log(series);
             for (var i = 0; i < series.length; i++) {
                 var serie = series[i];
-                console.log(serie);
                 var schedaSerie = {
                     image:poster(serie.poster_path, foto),
                     nome:serie.name,
@@ -459,7 +468,6 @@ $('#bottone-attore').on('click', function(){
             var attori = actor5(avengers.cast);
             for (var i = 0; i < attori.length; i++) {
             var attore = attori[i];
-            console.log(attore);
             var actorList = {
                 nome:attore.name,
                 personaggio:attore.character,
@@ -482,42 +490,37 @@ function actor5(actor1){
 }
 
 /*
-function myActorList(filmCercato){
-    var apiBaseUrl = 'https://api.themoviedb.org/3';
+//Generi film
+$('.mood-type').change(function(){
+var thisGenre = $(this).val();
 
-    $.ajax({
-        url:apiBaseUrl + 'search/movie/' + ric(num, schedaFilm),
+var apiBaseUrl = 'https://api.themoviedb.org/3';
+
+$.ajax({
+        url: apiBaseUrl + '/genre/movie/list',
         data:{
             api_key:'ccb9c8ef6b3a33f07b7be007336fd3e2',
-            query:'',
-            language: 'it-IT',
-            append_to_response:'credits'
+            query: '',
+            language: 'it-IT'
         },
         method:'GET',
-        success: function(avengers){
-            var attori = actor5(avengers.cast);
-            for (var i = 0; i < attori.length; i++) {
-            var attore = attori[i];
-            console.log(attore);
-            var actorList = {
-                actorName:attore.name,
-                personaggio:attore.character,
-                //fotoattore: attore.profile_path
-                }
+        success: function (type) {
+        var types = type.genres;
+        for (var i = 0; i < types.length; i++) {
+            var oneType = types[i];
+            var idGenre = oneType.id;
+            var typeGenre = oneType.name;
 
-            var templateActor = templateOne(actorList);
-            $('.container-film').append(templateActor);
-            }
-        },
-        error: function(){
-        alert('errore');
+            scelta(thisGenre, idGenre);
+        };
     }
-})
-};
+});
+});
 
-function actor5(actor1){
-    actor1 = actor1.slice(0, 5);
-    return actor1;
-}
+function scelta(thisGenre, idGenre){
+        if (thisGenre == "scegli"){
+            $('.lista').show();
+        }
+};
 
 */
