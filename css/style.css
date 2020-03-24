@@ -165,8 +165,9 @@ select{
     margin-left: 50px;
 }
 
-.actor-list{
+.actor-list img{
     margin-right: 10px;
+    border: 1px solid #f28400;
 }
 
 /* Default film/telefilm */
@@ -419,9 +420,10 @@ i.fab.fa-youtube{
     margin-top: 15px;
     cursor: pointer;
     margin-right: 20px;
+    color: white;
 }
 
-.color{
+.orange{
     color: #f28400;
 }
 
