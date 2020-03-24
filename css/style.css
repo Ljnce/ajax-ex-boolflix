@@ -151,24 +151,44 @@ select{
 
 /* Actor list */
 #bottone-attore{
-    width:80px;
-    height: 50px;
+    width:60px;
+    height: 40px;
     cursor: pointer;
+    background-color: grey;
+    color:white;
+    border-style: none;
 }
 
 .look-this-actor{
     width:760px;
     height: 300px;
+    display: none;
+}
+
+.container-actor{
     display: flex;
     flex-direction: row;
-    overflow-y: auto;
-    margin-left: 50px;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    /* overflow-y: auto; */
+    margin-left: 80px;
 }
 
 .actor-list img{
-    margin-right: 10px;
     border: 1px solid #f28400;
 }
+
+.actor-list h3{
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.actor-list h4{
+    font-size: 8px;
+    margin-top: 5px;
+}
+
 
 /* Default film/telefilm */
 .default-film{
@@ -245,6 +265,8 @@ select{
     width: 200px;
     display: none;
     padding-left: 7px;
+    padding-bottom: 5px;
+    overflow-x: auto;
 }
 
 .active{
@@ -256,20 +278,22 @@ select{
 }
 
 .info img{
-    height: 40px;
+    height: 30px;
     object-fit: contain;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .lista h1{
     font-size: 15px;
     margin-top: 10px;
     font-weight: bold;
+    text-align: center;
 }
 
 .lista h3{
     font-size: 10px;
     font-size: lighter;
+    text-align: center;
 }
 
 .lista h5{
@@ -284,8 +308,8 @@ select{
 }
 
 .flag{
-    height: 35px;
-    width: 35px;
+    height: 25px;
+    width: 25px;
     object-fit: contain;
 }
 
@@ -296,6 +320,7 @@ select{
 
 .stars span{
     font-size: 15px;
+    margin-bottom: 10px;
 }
 
 /* Footer */

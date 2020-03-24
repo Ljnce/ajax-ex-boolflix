@@ -76,7 +76,6 @@ $('#bottone').click(function(){  //----> CON CLICK <-----
     $('.title-search').show();
     myListMoovie(filmCercato);
     myListSeries(filmCercato);
-    avengersActor(filmCercato);
 });
 //$('#bottone').click(myListMoovie);
 
@@ -91,7 +90,6 @@ $('#input').keypress(function(event){ //---------> CON TASTO ENTER <--------
         $('.title-search').show();
         myListMoovie(filmCercato);
         myListSeries(filmCercato);
-        avengersActor(filmCercato);
     }
 });
 
@@ -106,12 +104,14 @@ function myListMoovie(filmCercato){
     //Inserisco l'URL dell'Api
     var apiBaseUrl = 'https://api.themoviedb.org/3';
 
+
     $.ajax({
     url: apiBaseUrl + '/search/movie',
     data:{
         api_key:'ccb9c8ef6b3a33f07b7be007336fd3e2', //la chiave api senza
         query: filmCercato,//filmCercato, //insierisco la query
-        language: 'it-IT' //lingua da riprodurre
+        language: 'it-IT', //lingua da riprodurre
+        append_to_response:'credits'
     },
     method:'GET',
     success: function (tv) {
@@ -128,12 +128,13 @@ function myListMoovie(filmCercato){
                     dataUscita:film.release_date,
                     flag:flag(film.original_language),//flag(film.original_language),
                     stella:stars('<i class="far fa-star"></i>', votos),
-                    voto: voto
+                    voto: voto,
+                    overview: film.overview
                 };
                 var voto = film.vote_average;
                 var votos = parseInt(Math.ceil(voto/ 2));// ------>     da eliminare se si vogliono usare le 10 stelle
                 var foto = 'https://image.tmdb.org/t/p/w342';
-
+                var num = film.id;
 
                 var titolo = schedaFilm.titoloOriginale; //creo variabile che mi trova solo i titoli dei film
                 ricercamiIFilm(filmCercato, titolo, schedaFilm);
@@ -191,8 +192,10 @@ function myListSeries(filmCercato){
                     dataUscita:serie.first_air_date,
                     flags:flag(serie.original_language),
                     stella:stars('<i class="far fa-star"></i>', votos),
-                    voto: voto
-                };
+                    voto: voto,
+                    overview: serie.overview
+                }
+
                 var voto = serie.vote_average;
                 var votos = parseInt(Math.ceil(voto/ 2)); //  -------> da eliminare se si vogliono usare le 10 stelle
                 var foto = 'https://image.tmdb.org/t/p/w342';
@@ -358,6 +361,19 @@ $('.look-this-info').on('mouseleave', '.play', function(){
     thisPlay.removeClass('grey');
 });
 
+//
+$('.look-this-info').on('mouseenter', '.avengers-actor-list', function(){
+    var thisActor = $(this).children('#bottone-attore');
+    thisActor.addClass('grey');
+});
+
+$('.look-this-info').on('mouseleave', '.avengers-actor-list', function(){
+    var thisActor = $(this).children('#bottone-attore');
+    thisActor.removeClass('grey');
+});
+
+
+
 //Immagine utente corrispondente in alto
 $('.image').one('click', '.utente', function(){ //one click perchè cn on rischia di mettere 2 icone con 2 click rapidi
 var thisData = $(this).attr('data-open');
@@ -420,51 +436,88 @@ $('.listaa').on('mouseleave', '.lista', function (){
 source = $("#template-actor").html(); //Trovo il mio template
 var templateOne = Handlebars.compile(source); //
 
-$('#bottone-attore').click(function(){
+$('#bottone-attore').on('click', function(){
+    if ($('.look-this-actor').is(':hidden')) {
+        $('.look-this-actor').slideDown(500);
+    } else if ($('.look-this-actor').is(':visible')){
+        $('.look-this-actor').slideUp(500);
+    };
+    $('.container-actor').text('');
 
     var apiBaseUrl = 'https://api.themoviedb.org/3';
 
     $.ajax({
-    url:apiBaseUrl + '/movie/299536/credits',
-    data:{
-        api_key:'ccb9c8ef6b3a33f07b7be007336fd3e2',
-        query:'',
-        language: 'it-IT'
-    },
-    method:'GET',
-    success: function(avengers){
-        var attori = avengers.cast
-        console.log(attori);
-        for (var i = 0; i < attori.length; i++) {
-        var attore = attori[i];
-        var actorList = {
-            nome:attore.name,
-            personaggio:attore.character,
-            fotoattore: attore.profile_path
-        }
+        url:apiBaseUrl + '/movie/299536/credits',
+        data:{
+            api_key:'ccb9c8ef6b3a33f07b7be007336fd3e2',
+            query:'',
+            language: 'it-IT',
+            append_to_response:'credits'
+        },
+        method:'GET',
+        success: function(avengers){
+            var attori = actor5(avengers.cast);
+            for (var i = 0; i < attori.length; i++) {
+            var attore = attori[i];
+            console.log(attore);
+            var actorList = {
+                nome:attore.name,
+                personaggio:attore.character,
+                fotoattore: attore.profile_path
+                }
 
-        var templateActor = templateOne(actorList);
-        $('.look-this-actor').append(templateActor);
+            var templateActor = templateOne(actorList);
+            $('.look-this-actor .container-actor').append(templateActor);
+            }
+        },
+        error: function(){
+        alert('errore');
         }
-    },
-    error: function(){
+    })
+});
+
+function actor5(actor1){
+    actor1 = actor1.slice(0, 5);
+    return actor1;
+}
+
+/*
+function myActorList(filmCercato){
+    var apiBaseUrl = 'https://api.themoviedb.org/3';
+
+    $.ajax({
+        url:apiBaseUrl + 'search/movie/' + ric(num, schedaFilm),
+        data:{
+            api_key:'ccb9c8ef6b3a33f07b7be007336fd3e2',
+            query:'',
+            language: 'it-IT',
+            append_to_response:'credits'
+        },
+        method:'GET',
+        success: function(avengers){
+            var attori = actor5(avengers.cast);
+            for (var i = 0; i < attori.length; i++) {
+            var attore = attori[i];
+            console.log(attore);
+            var actorList = {
+                actorName:attore.name,
+                personaggio:attore.character,
+                //fotoattore: attore.profile_path
+                }
+
+            var templateActor = templateOne(actorList);
+            $('.container-film').append(templateActor);
+            }
+        },
+        error: function(){
         alert('errore');
     }
 })
-});
+};
 
-// $('#bottone-attore').dblclick(function(){
-//     $('.actor-list').hide();
-// });
-
-
-/*
-function actor(attoreCercato, actorList){
-    if(attoreCercato == actorLista){
-        source = $("#actor-list").html(); //Trovo il mio template
-        var template1 = Handlebars.compile(source); //
-        var templateActor = template1(actorList);
-        $('.look-this-actor').append(templateActor);
-    }
+function actor5(actor1){
+    actor1 = actor1.slice(0, 5);
+    return actor1;
 }
+
 */

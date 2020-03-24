@@ -45,11 +45,15 @@
                                 <p><i class="fas fa-info-circle"></i> Info</p>
                             </div>
                         </div>
-                        <p>Clicca qui per vedere la lista degli attori di Avengers!</p>
-                        <button id="bottone-attore">Push</button>
+                        <div class="avengers-actor-list">
+                            <p>Clicca qui per vedere la lista di top 5 actor di Avengers!</p>
+                            <button id="bottone-attore">Actors</button>
+                        </div>
                     </div>
                     <div class="look-this-actor">
+                        <div class="container-actor">
 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,8 +158,12 @@
                             <h5>Release date: {{dataUscita}}</h3>
                             <img class="flag"src="https://www.countryflags.io/{{flag}}/shiny/64.png" alt="">
                             <div class="stars">
-                            <span>{{{stella}}}<span>
-                            <p>{{voto}}/10</p>
+                                <span>{{{stella}}}<span>
+                                <p>Vote: {{voto}}/10</p>
+                            </div>
+                            <p>{{overview}}</p>
+                            <p>{{actorName}}</p>
+                            <p>{{personaggio}}</p>
                         </div>
                     </div>
 
@@ -174,8 +182,10 @@
                             <h5>Release date: {{dataUscita}}</h3>
                             <img class="flag" src="https://www.countryflags.io/{{flags}}/shiny/64.png" alt="">
                             <div class="stars">
-                            <span>{{{stella}}}<span>
-                            <p>{{voto}}/10</p>
+                                <span>{{{stella}}}<span>
+                                <p>Vote: {{voto}}/10</p>
+                            </div>
+                            <p>{{overview}}</p>
                         </div>
                     </div>
 
@@ -186,8 +196,8 @@
         <script id="template-actor" type="text/x-handlebars-template">
 
             <div class="actor-list">
-                <img class="foto" src="https://image.tmdb.org/t/p/w92{{fotoattore}}" alt="">
                 <h3>{{nome}}</h3>
+                <img class="foto" src="https://image.tmdb.org/t/p/w92{{fotoattore}}" alt="">
                 <h4>{{personaggio}}</h4>
             </div>
 
@@ -195,7 +205,7 @@
 
         <script id="userid" type="text/x-handlebars-template">
 
-                    <div class="utentis" data-user= "{{numero}}">
+                    <div class="utentis">
                         <img class="profile-photo" src="https://mir-s3-cdn-cf.behance.net/project_modules/{{immagine}}" alt="">
                     </div>
 
