@@ -66,6 +66,10 @@ select{
     width: 150px;
 }
 
+#input:focus{
+    outline: none;
+}
+
 #bottone{
     padding:5px;
     margin-left: 10px;
@@ -492,6 +496,9 @@ i.fas.fa-star{
 @media screen and (max-width: 768px){
 
     /* Heroflix scelta utenti */
+    .logos{
+        margin-bottom: 90px;
+    }
     .logo img{
         width: 100px;
         height: 40px;
@@ -513,9 +520,116 @@ i.fas.fa-star{
         margin-bottom: 30px;
     }
 
-    .utente.icon i.far.fa-plus-square{
+    .utente.icon{
         display: none;
     }
 
+    /* Template */
+    .head{
+        height: 50px;
+    }
 
+
+    select{
+        display: none;
+    }
+
+    #input{
+        height: 25px;
+        width: 80px;
+    }
+
+    #bottone{
+        padding:5px;
+        margin-left: 10px;
+        cursor: pointer;
+        width: 20px;
+    }
+
+    .utentis .profile-photo{
+        height: 30px;
+        width: 30px;
+        object-fit: contain;
+        margin-left: 20px;
+    }
+
+    .container-film{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        overflow-y: auto;
+    }
+
+    .container-telefilm{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        overflow-y: auto;
+    }
+
+    .lista{
+        height: 303px;
+        width: 203px;
+        margin: 8px;
+    }
+
+    .info{
+        height: 300px;
+        width: 20px;
+        display: none;
+        padding-left: 7px;
+        padding-bottom: 5px;
+        overflow-x: auto;
+    }
+
+    .background{
+        background-position: center;
+    }
+
+    .look-this{
+        width: 100%;
+        height:250px;
+        align-items: flex-end;
+    }
+
+    .look-this-info img{
+        width:20px;
+    }
+
+    .look-this-info h1{
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .look-this-info h4,
+    .look-this-info p{
+        display: none;
+    }
+
+    .play-info p{
+        color: white;
+    }
+
+    .avengers-actor-list{
+        display: none;
+    }
+
+    footer{
+        height: 100px;
+        background-color: #f28400;
+    }
+
+    .foot{
+        height: 100px;
+    }
+
+    .footer-logo img{
+        width: 120px;
+    }
+
+    .icon{
+        font-size: 20px;
+    }
 }

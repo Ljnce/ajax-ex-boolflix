@@ -119,7 +119,7 @@ function myListMoovie(filmCercato){
         //console.log(films); //trovo tutti i film
             for (var i = 0; i < films.length; i++) {
                 var film = films[i]
-                //console.log(film);//trovo i singoli film il ciclo);
+                console.log(film);//trovo i singoli film il ciclo);
                 var schedaFilm = { //creo la mia scheda film in cui ricavo tutto quello che mi servirà
                     image:poster(film.poster_path, foto),
                     titolo:film.title,
@@ -128,10 +128,10 @@ function myListMoovie(filmCercato){
                     flag:flag(film.original_language),//flag(film.original_language),
                     stella:stars('<i class="far fa-star"></i>', votos),
                     voto: voto,
-                    overview: film.overview
+                    overview: film.overview,
+                    genere:film.genre_ids
                 };
 
-                var genere = film.genre_ids;
                 var voto = film.vote_average;
                 var votos = parseInt(Math.ceil(voto/ 2));// ------>     da eliminare se si vogliono usare le 10 stelle
                 var foto = 'https://image.tmdb.org/t/p/w342';
@@ -139,7 +139,6 @@ function myListMoovie(filmCercato){
 
                 var titolo = schedaFilm.titoloOriginale; //creo variabile che mi trova solo i titoli dei film
                 ricercamiIFilm(filmCercato, titolo, schedaFilm);
-                ricercaGenere(genere)
             /* ALTERNATIVA DENTRO ALLA FUNZIONE, SENZA CHIAMARE UNA FUNZIONE ESTERNA
             if (filmCercato.toLowerCase() == titolo.toLowerCase()) { //Se il testo che ho inserito è uguale a uno dei titoli, compare
                 var thisIsMyTemplate = template(schedaFilm); // Creo una variabile - template composta dal mio "array[i]" di elementi
@@ -162,15 +161,6 @@ function ricercamiIFilm(filmCercato, titolo, schedaFilm) {
     }
 };
 
-//Generi film
-function ricercaGenere(genere){
-$('.mood-type').change(function(){
-var thisGenre = $(this).val();
-if (thisGenre == genere) { console.log('ciao');
-    $('.lista').hide()
-}
-})
-};
 
 //Serie TV
 source = $("#template-serie-list").html();
@@ -202,7 +192,8 @@ function myListSeries(filmCercato){
                     flags:flag(serie.original_language),
                     stella:stars('<i class="far fa-star"></i>', votos),
                     voto: voto,
-                    overview: serie.overview
+                    overview: serie.overview,
+                    genere:serie.genre_ids
                 }
 
                 var voto = serie.vote_average;
@@ -273,6 +264,22 @@ function stars(icona, votos){
 };
 
 /*
+//5 Stelle alternativa
+function vote(votos){
+    var votos = parseInt(Math.ceil(votos/ 2));
+    var stringaStelle = '';
+    for (var i = 1; i <= 5; i++) {
+        if (i <= votos) {
+            stringaStelle += '<i class="fas fa-star"></i>';
+        } else{
+            stringaStelle += '<i class="far fa-star"></i>';
+        }
+    }
+    return stringaStelle;
+};
+*/
+
+/*
 //10 stelle
 function stars(icona, voto){
     console.log(voto);
@@ -325,9 +332,9 @@ function stars(icona, voto){
 };
 */
 
-//SCELTA SERIE TV O FilM
+//Scelta se film o serie
 $('.data-type').change(function(){
-    var thisType = $(this).val().toLowerCase();
+    var thisType = $(this).val();
     if (thisType == 'scegli') {
         $('.lista').show();
     } else{
@@ -339,7 +346,7 @@ $('.data-type').change(function(){
 function film(thisType){
     $('.lista.films').each(function(){
         var thisListType = $(this).attr('data-type');
-        if (thisType == thisListType.toLowerCase()) {
+        if (thisType !== thisListType) {
             $(this).show();
         } else {
             $(this).hide();
@@ -350,7 +357,40 @@ function film(thisType){
 function telefilm(thisType){
     $('.lista.series').each(function(){
         var thisListType = $(this).attr('data-type');
-        if (thisType == thisListType.toLowerCase()) {
+        if (thisType !== thisListType) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    })
+};
+
+//Scelta generi film/serie
+$('.mood-type').change(function(){
+    var thisGenre = $(this).val();
+        if (thisGenre == 'scegli') {
+        $('.lista').show();
+    } else{
+        filmGenere(thisGenre);
+        telefilmGenere(thisGenre);
+    }
+});
+
+function filmGenere(thisGenre){
+    $('.lista.films').each(function(){
+        var thisGenreType = $(this).attr('data-genere');
+        if (thisGenre == thisGenreType.toLowerCase()) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    })
+};
+
+function telefilmGenere(thisGenre){
+    $('.lista.series').each(function(){
+        var thisGenreType = $(this).attr('data-genere');
+        if (thisGenre == thisGenreType.toLowerCase()) {
             $(this).show();
         } else {
             $(this).hide();
@@ -359,7 +399,7 @@ function telefilm(thisType){
 };
 
 
-//PLAY
+//Play
 $('.look-this-info').on('mouseenter', '.play', function(){
     var thisPlay = $(this);
     thisPlay.addClass('grey');
