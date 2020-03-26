@@ -30,12 +30,12 @@ $('.elementi').on('mouseleave', 'h5', function(){
 });
 
 //Orange icona plus
-$('.elementi').on('mouseenter', 'i.fas.fa-plus-circle', function(){
+$('.elementi').on('mouseenter', '.fas.fa-plus-circle', function(){
     var thisIcon = $(this);
     thisIcon.addClass('orange');
 });
 
-$('.elementi').on('mouseleave', 'i.fas.fa-plus-circle', function(){
+$('.elementi').on('mouseleave', '.fas.fa-plus-circle', function(){
     var thisIcon = $(this);
     thisIcon.removeClass('orange');
 });

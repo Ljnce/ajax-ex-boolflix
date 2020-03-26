@@ -139,9 +139,11 @@ select{
     align-items: center;
     margin-right: 20px;
     padding-top: 10px;
-
 }
 
+.small{
+    display: none;
+}
 /* .look-this-info .play::before{
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
@@ -164,7 +166,7 @@ select{
 }
 
 .look-this-actor{
-    width:760px;
+    width:800px;
     height: 300px;
     display: none;
 }
@@ -173,10 +175,14 @@ select{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    align-items: center;
+}
+
+.actor-list{
+    margin-right: 20px;
+    display: flex;
     justify-content: center;
-    /* overflow-y: auto; */
-    margin-left: 80px;
+    align-items: center;
+    flex-direction: column;
 }
 
 .actor-list img{
@@ -541,16 +547,16 @@ i.fas.fa-star{
 
     #bottone{
         padding:5px;
-        margin-left: 10px;
+        margin-left: 6px;
         cursor: pointer;
-        width: 20px;
+        width: 25px;
     }
 
     .utentis .profile-photo{
         height: 30px;
         width: 30px;
         object-fit: contain;
-        margin-left: 20px;
+        margin-left: 15px;
     }
 
     .container-film{
@@ -608,8 +614,14 @@ i.fas.fa-star{
         display: none;
     }
 
-    .play-info p{
+    .play{
+        display: none;
+    }
+
+    .small i{
+        display: block;
         color: white;
+        width: 100px;
     }
 
     .avengers-actor-list{
@@ -631,5 +643,15 @@ i.fas.fa-star{
 
     .icon{
         font-size: 20px;
+    }
+
+    .default-film img,
+    .default-series img{
+        height: 200px;
+        width: 120px;
+        object-fit: cover;
+        margin-top: 10px;
+        margin-left: 8px;
+        border: 1px solid #f28400;
     }
 }
