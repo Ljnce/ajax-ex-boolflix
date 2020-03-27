@@ -72,6 +72,7 @@ $('#bottone').click(function(){  //----> CON CLICK <-----
     $('#input').val('');//Cancello quello che c'' all'interno dell'input
     $('.container-film').text(''); //Cancello il risultato precedente
     $('.container-telefilm').text('');
+    $('.film-actor').hide();
     $('.favourite').hide();
     $('.title-search').show();
     myListMoovie(filmCercato);
@@ -86,6 +87,7 @@ $('#input').keypress(function(event){ //---------> CON TASTO ENTER <--------
         $('#input').val('');//Cancello quello che c'' all'interno dell'input
         $('.container-film').text(''); //Cancello il risultato precedente
         $('.container-telefilm').text(''); //Cancello il risultato precedente
+        $('.film-actor').hide();
         $('.favourite').hide();
         $('.title-search').show();
         myListMoovie(filmCercato);
@@ -111,7 +113,6 @@ function myListMoovie(filmCercato){
         api_key:'ccb9c8ef6b3a33f07b7be007336fd3e2', //la chiave api senza
         query: filmCercato,//filmCercato, //insierisco la query
         language: 'it-IT', //lingua da riprodurre
-        append_to_response:'credits'
     },
     method:'GET',
     success: function (tv) {
@@ -181,7 +182,7 @@ function myListSeries(filmCercato){
     method:'GET',
     success: function (telefilm) {
         var series = telefilm.results
-        //console.log(series);
+        console.log(series);
             for (var i = 0; i < series.length; i++) {
                 var serie = series[i];
                 var schedaSerie = {
@@ -485,27 +486,54 @@ $('.listaa').on('mouseleave', '.lista', function (){
 source = $("#template-actor").html(); //Trovo il mio template
 var templateOne = Handlebars.compile(source); //
 
-$('#bottone-attore').on('click', function(){
+$('#bottone-attore-avengers').on('click', function(){
     if ($('.look-this-actor').is(':hidden')) {
         $('.look-this-actor').slideDown(500);
     } else if ($('.look-this-actor').is(':visible')){
         $('.look-this-actor').slideUp(500);
     };
     $('.container-actor').text('');
+    var crediti = '/299536/credits';
+    var appendActor = '.look-this-actor .container-actor';
+    opera(crediti, appendActor);
+});
 
+$('#bottone-attore-lord').on('click', function(){
+    ok()
+    var crediti = '/121/credits';
+    var appendActor = '.film-actor .container-actor-film';
+    opera(crediti, appendActor);
+});
+
+$('#bottone-attore-batman').on('click', function(){
+    ok()
+    var crediti = '/155/credits';
+    var appendActor = '.film-actor .container-actor-film';
+    opera(crediti, appendActor);
+});
+
+function ok(){
+    if ($('.film-actor').is(':hidden')) {
+        $('.film-actor').slideDown(500);
+    } else if ($('.film-actor').is(':visible')){
+        $('.film-actor').slideUp(500);
+    };
+    $('.container-actor-film').text('');
+}
+
+function opera(crediti, appendActor){
     var apiBaseUrl = 'https://api.themoviedb.org/3';
 
     $.ajax({
-        url:apiBaseUrl + '/movie/299536/credits',
+        url:apiBaseUrl + '/movie' + crediti,
         data:{
             api_key:'ccb9c8ef6b3a33f07b7be007336fd3e2',
             query:'',
             language: 'it-IT',
-            append_to_response:'credits'
         },
         method:'GET',
-        success: function(avengers){
-            var attori = actor5(avengers.cast);
+        success: function(actors){
+            var attori = actor5(actors.cast);
             for (var i = 0; i < attori.length; i++) {
             var attore = attori[i];
             var actorList = {
@@ -513,21 +541,21 @@ $('#bottone-attore').on('click', function(){
                 personaggio:attore.character,
                 fotoattore: attore.profile_path
                 }
-
             var templateActor = templateOne(actorList);
-            $('.look-this-actor .container-actor').append(templateActor);
+            $(appendActor).append(templateActor);
             }
         },
         error: function(){
         alert('errore');
         }
     })
-});
+};
 
 function actor5(actor1){
     actor1 = actor1.slice(0, 5);
     return actor1;
 }
+
 
 /*
 //Generi film
@@ -564,3 +592,5 @@ function scelta(thisGenre, idGenre){
 };
 
 */
+
+;

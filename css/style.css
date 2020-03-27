@@ -156,7 +156,9 @@ select{
 }
 
 /* Actor list */
-#bottone-attore{
+#bottone-attore-avengers,
+#bottone-attore-lord,
+#bottone-attore-batman{
     width:60px;
     height: 40px;
     cursor: pointer;
@@ -171,10 +173,29 @@ select{
     display: none;
 }
 
+.film-actor{
+    width:800px;
+    height: 170px;
+    display: none;
+    margin-top: 20px;
+}
+
 .container-actor{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+}
+
+.container-actor-film{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.bottone{
+    display: flex;
+    justify-content: center;
 }
 
 .actor-list{
@@ -221,7 +242,6 @@ select{
     object-fit: contain;
     margin-top: 20px;
     margin-left: 10px;
-    border: 1px solid white;
     border: 1px solid #f28400;
 }
 
@@ -614,11 +634,11 @@ i.fas.fa-star{
         display: none;
     }
 
-    .play{
+    .big{
         display: none;
     }
 
-    .small i{
+    .small{
         display: block;
         color: white;
         width: 100px;
