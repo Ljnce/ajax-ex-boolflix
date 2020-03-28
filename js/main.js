@@ -60,6 +60,20 @@ $(document).on("scroll", function() {
     }
 });
 
+// Icona volume
+$('i.fas.fa-volume-up').click(function(){
+    alert('Volume off');
+    $('i.fas.fa-volume-up').hide();
+    $('i.fas.fa-volume-mute').show();
+});
+
+$('i.fas.fa-volume-mute').click(function(){
+    alert('Volume on');
+    $('i.fas.fa-volume-mute').hide();
+    $('i.fas.fa-volume-up').show();
+});
+
+
 
 // Template film/telefilm
 source = $("#template-film-list").html(); //Trovo il mio template
@@ -486,6 +500,7 @@ $('.listaa').on('mouseleave', '.lista', function (){
 source = $("#template-actor").html(); //Trovo il mio template
 var templateOne = Handlebars.compile(source); //
 
+// Template attori avengers
 $('#bottone-attore-avengers').on('click', function(){
     if ($('.look-this-actor').is(':hidden')) {
         $('.look-this-actor').slideDown(500);
@@ -498,9 +513,18 @@ $('#bottone-attore-avengers').on('click', function(){
     opera(crediti, appendActor);
 });
 
+// Template attori Il signore degli anelli
 $('#bottone-attore-lord').on('click', function(){
     ok()
     var crediti = '/121/credits';
+    var appendActor = '.film-actor .container-actor-film';
+    opera(crediti, appendActor);
+});
+
+// Tempalete attori batman
+$('#bottone-attore-civil').on('click', function(){
+    ok()
+    var crediti = '/271110/credits';
     var appendActor = '.film-actor .container-actor-film';
     opera(crediti, appendActor);
 });
@@ -512,6 +536,7 @@ $('#bottone-attore-batman').on('click', function(){
     opera(crediti, appendActor);
 });
 
+// Funzione per slide Up e Down su attori
 function ok(){
     if ($('.film-actor').is(':hidden')) {
         $('.film-actor').slideDown(500);
@@ -521,6 +546,7 @@ function ok(){
     $('.container-actor-film').text('');
 }
 
+// Ajax unico per gli attori
 function opera(crediti, appendActor){
     var apiBaseUrl = 'https://api.themoviedb.org/3';
 
@@ -533,7 +559,7 @@ function opera(crediti, appendActor){
         },
         method:'GET',
         success: function(actors){
-            var attori = actor5(actors.cast);
+            var attori = casts(actors.cast);
             for (var i = 0; i < attori.length; i++) {
             var attore = attori[i];
             var actorList = {
@@ -551,10 +577,12 @@ function opera(crediti, appendActor){
     })
 };
 
-function actor5(actor1){
+function casts(actor1){
     actor1 = actor1.slice(0, 5);
     return actor1;
-}
+};
+
+
 
 
 /*
@@ -592,5 +620,3 @@ function scelta(thisGenre, idGenre){
 };
 
 */
-
-;

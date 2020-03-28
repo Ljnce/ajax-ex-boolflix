@@ -155,16 +155,42 @@ select{
     color: #f28400;
 }
 
+.volume{
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+
+i.fas.fa-volume-mute{
+    display: none;
+}
+
+
+
 /* Actor list */
-#bottone-attore-avengers,
-#bottone-attore-lord,
-#bottone-attore-batman{
+#bottone-attore-avengers{
     width:60px;
     height: 40px;
     cursor: pointer;
     background-color: grey;
     color:white;
     border-style: none;
+}
+
+#bottone-attore-lord,
+#bottone-attore-batman,
+#bottone-attore-civil{
+    width:60px;
+    height: 30px;
+    cursor: pointer;
+    color:white;
+    border-style: none;
+    border: 1px solid #f28400;
+    background-color: black;
+    margin-top: 5px;
 }
 
 .look-this-actor{
@@ -174,7 +200,7 @@ select{
 }
 
 .film-actor{
-    width:800px;
+    width:900px;
     height: 170px;
     display: none;
     margin-top: 20px;
