@@ -141,9 +141,10 @@ select{
     padding-top: 10px;
 }
 
-.small{
+.play .pause{
     display: none;
 }
+
 /* .look-this-info .play::before{
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
@@ -163,7 +164,6 @@ select{
     cursor: pointer;
 }
 
-
 i.fas.fa-volume-mute{
     display: none;
 }
@@ -171,15 +171,6 @@ i.fas.fa-volume-mute{
 
 
 /* Actor list */
-#bottone-attore-avengers{
-    width:60px;
-    height: 40px;
-    cursor: pointer;
-    background-color: grey;
-    color:white;
-    border-style: none;
-}
-
 #bottone-attore-lord,
 #bottone-attore-batman,
 #bottone-attore-civil{
@@ -657,18 +648,20 @@ i.fas.fa-star{
     }
 
     .look-this-info h4,
-    .look-this-info p{
+    .description{
         display: none;
     }
 
-    .big{
-        display: none;
+    .play{
+        background-color: rgba(0, 0, 0, 0);
     }
 
-    .small{
-        display: block;
-        color: white;
-        width: 100px;
+    .play i{
+        font-size:8px;
+    }
+
+    .volume{
+        display: none;
     }
 
     .avengers-actor-list{
@@ -710,7 +703,7 @@ i.fas.fa-star{
     }
 
     .actor-list{
-        margin-right: 15px;
+        margin-right: 6px;
     }
 
     .actor-list img{
@@ -730,7 +723,4 @@ i.fas.fa-star{
         margin-top: 3px;
     }
 
-    .volume{
-        font-size: 15px;
-    }
 }

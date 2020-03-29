@@ -501,7 +501,7 @@ source = $("#template-actor").html(); //Trovo il mio template
 var templateOne = Handlebars.compile(source); //
 
 // Template attori avengers
-$('#bottone-attore-avengers').on('click', function(){
+$('.avengers-actor-list').on('click', '#bottone-attore-avengers', function(){
     if ($('.look-this-actor').is(':hidden')) {
         $('.look-this-actor').slideDown(500);
     } else if ($('.look-this-actor').is(':visible')){
@@ -582,8 +582,16 @@ function casts(actor1){
     return actor1;
 };
 
+//Click pause
+$('.play').on('click', '.start', function(){
+    $('.start').hide();
+    $('.pause').show();
+});
 
-
+$('.play').on('click', '.pause', function(){
+    $('.pause').hide();
+    $('.start').show();
+});
 
 /*
 //Generi film
