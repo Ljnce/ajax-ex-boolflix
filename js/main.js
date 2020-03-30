@@ -134,7 +134,7 @@ function myListMoovie(filmCercato){
         //console.log(films); //trovo tutti i film
             for (var i = 0; i < films.length; i++) {
                 var film = films[i]
-                console.log(film);//trovo i singoli film il ciclo);
+                //console.log(film);//trovo i singoli film il ciclo);
                 var schedaFilm = { //creo la mia scheda film in cui ricavo tutto quello che mi servirà
                     image:poster(film.poster_path, foto),
                     titolo:film.title,
@@ -196,7 +196,7 @@ function myListSeries(filmCercato){
     method:'GET',
     success: function (telefilm) {
         var series = telefilm.results
-        console.log(series);
+        //console.log(series);
             for (var i = 0; i < series.length; i++) {
                 var serie = series[i];
                 var schedaSerie = {
@@ -393,8 +393,8 @@ $('.mood-type').change(function(){
 
 function filmGenere(thisGenre){
     $('.lista.films').each(function(){
-        var thisGenreType = $(this).attr('data-genere');
-        if (thisGenre == thisGenreType.toLowerCase()) {
+        var thisGenreType = parseInt($(this).attr('data-genere'));
+        if (thisGenre == thisGenreType) {
             $(this).show();
         } else {
             $(this).hide();
@@ -404,8 +404,8 @@ function filmGenere(thisGenre){
 
 function telefilmGenere(thisGenre){
     $('.lista.series').each(function(){
-        var thisGenreType = $(this).attr('data-genere');
-        if (thisGenre == thisGenreType.toLowerCase()) {
+        var thisGenreType = parseInt($(this).attr('data-genere'));
+        if (thisGenre == thisGenreType) {
             $(this).show();
         } else {
             $(this).hide();
