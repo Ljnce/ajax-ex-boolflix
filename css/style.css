@@ -48,8 +48,12 @@
 }
 
 select{
-    background-color: white;
+    background-color:black;
+    color: #f28400;
+    margin-left: 20px;
+    height: 30px;
 }
+
 
 /* Right-top */
 .search{

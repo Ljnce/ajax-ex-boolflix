@@ -596,6 +596,9 @@ $('.play').on('click', '.pause', function(){
     $('.start').show();
 });
 
+$(document).ready(function() {
+  $('select').niceSelect();
+});
 /*
 //Generi film
 $('.mood-type').change(function(){
