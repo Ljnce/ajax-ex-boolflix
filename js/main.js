@@ -361,8 +361,9 @@ $('.data-type').change(function(){
 function film(thisType){
     $('.lista.films').each(function(){
         var thisListType = $(this).attr('data-type');
-        if (thisType !== thisListType) {
+        if (thisType == thisListType) {
             $(this).show();
+            $('.listaa .search-film-series').show();
         } else {
             $(this).hide();
         }
@@ -372,10 +373,12 @@ function film(thisType){
 function telefilm(thisType){
     $('.lista.series').each(function(){
         var thisListType = $(this).attr('data-type');
-        if (thisType !== thisListType) {
+        if (thisType == thisListType) {
             $(this).show();
+            $('.listaa .search-film-series').show();
         } else {
             $(this).hide();
+            $('.title-search').hide();
         }
     })
 };

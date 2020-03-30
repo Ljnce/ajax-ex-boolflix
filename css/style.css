@@ -277,6 +277,10 @@ i.fas.fa-volume-mute{
     font-weight: bold;
 }
 
+.search-film-series{
+    display: none;
+}
+
 .title-search{
     display: none;
 }
