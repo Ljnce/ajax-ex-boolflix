@@ -134,7 +134,7 @@ function myListMoovie(filmCercato){
         //console.log(films); //trovo tutti i film
             for (var i = 0; i < films.length; i++) {
                 var film = films[i]
-                //console.log(film);//trovo i singoli film il ciclo);
+                console.log(film);//trovo i singoli film il ciclo);
                 var schedaFilm = { //creo la mia scheda film in cui ricavo tutto quello che mi servirà
                     image:poster(film.poster_path, foto),
                     titolo:film.title,
@@ -273,7 +273,7 @@ function stars(icona, votos){
     } else if (votos == 5) {
         icona = '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>' + '' + '<i class="fas fa-star"></i>';;
     } else {
-        icona = '<i class="fas fa-medal"></i>';
+        icona = '<i class="far fa-times-circle"></i>';
     }
     return icona;
 };
@@ -596,9 +596,9 @@ $('.play').on('click', '.pause', function(){
     $('.start').show();
 });
 
-$(document).ready(function() {
-  $('select').niceSelect();
-});
+//Scroll top dopo la scelta utente
+$(document).scrollTop(0);
+
 /*
 //Generi film
 $('.mood-type').change(function(){
